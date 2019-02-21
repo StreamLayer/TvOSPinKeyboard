@@ -19,8 +19,8 @@ class ViewController: UIViewController, TvOSPinKeyboardViewDelegate {
         pinKeyboard.buttonsNormalBackgroundColor = .clear
         pinKeyboard.deleteButtonTitle = "←"
         
-        let backgroundBlurEffectSyle = UIBlurEffect(style: .extraDark)
-        pinKeyboard.backgroundView = UIVisualEffectView(effect: backgroundBlurEffectSyle)
+        let backgroundBlurEffectStyle = UIBlurEffect(style: .extraDark)
+        pinKeyboard.backgroundView = UIVisualEffectView(effect: backgroundBlurEffectStyle)
         
         pinKeyboard.delegate = self
         
@@ -38,7 +38,11 @@ class ViewController: UIViewController, TvOSPinKeyboardViewDelegate {
     }
 
     // MARK: - TvOSPinKeyboardViewDelegate
-    
+    func requestNewPinButtonPressed() {
+        pinKeyboard.showAlertController(withTitle: "Alert", message: "Error, your code is wrong",
+                                        cancelButtonTitle: "So sad")
+    }
+
     func pinKeyboardDidEndEditing(pinCode: String) {
         pinLabel.text = "Your Pin Code is: " + pinCode
     }

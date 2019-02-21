@@ -252,6 +252,7 @@ open class TvOSPinKeyboardViewController: UIViewController {
 
         return requestNewPinButton
     }
+
     private func setUpContrainsts() {
         constrain(backgroundView, view) {
             backgroundView, view in
@@ -291,16 +292,17 @@ open class TvOSPinKeyboardViewController: UIViewController {
         }
     }
 
-    @objc
-    func showAlertPressed(sender: FocusTvButton) {
-        showAlertController(withTitle: "Alert!", message: "Attention! Ur pincode is wrong", cancelButtonTitle: "Ok")
-    }
-
-    func showAlertController(withTitle title: String, message: String, cancelButtonTitle: String) {
+    // MARK: Public methods
+    public func showAlertController(withTitle title: String, message: String, cancelButtonTitle: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: cancelButtonTitle, style: .cancel)
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion: nil)
+    }
+
+    @objc
+    func showAlertPressed(sender: FocusTvButton) {
+        self.delegate?.requestNewPinButtonPressed()
     }
 
     @objc

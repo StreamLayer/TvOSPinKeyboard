@@ -11,4 +11,5 @@ import Foundation
 @objc public protocol TvOSPinKeyboardViewDelegate: class {
 
    func pinKeyboardDidEndEditing(pinCode: String)
+   func requestNewPinButtonPressed()
 }
