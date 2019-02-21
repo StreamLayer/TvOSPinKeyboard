@@ -51,6 +51,14 @@ open class TvOSPinKeyboardViewController: UIViewController {
     
     public var numpadButtons = defaultNumpadButtons
     public var numpadFont = defaultNumpadFont
+    public var requestNewPinButtonTitle: String? {
+        get {
+            return requestPinButton.title(for: .normal)
+        }
+        set {
+            requestPinButton.setTitle(newValue, for: .normal)
+        }
+    }
     
     public var deleteButtonTitle = defaultDeleteButtonTitle
     public var deleteButtonFont = defaultNumpadFont
@@ -69,7 +77,8 @@ open class TvOSPinKeyboardViewController: UIViewController {
     private var pinStack: UIStackView!
     private var numpadButtonsStack: UIStackView!
     private var deleteButton: FocusTvButton!
-    
+    private var requestPinButton: FocusTvButton!
+
     private var introducedPin: String = "" {
         didSet {
             guard let pinStackLabels = pinStack.arrangedSubviews as? [UILabel] else { return }
@@ -108,14 +117,15 @@ open class TvOSPinKeyboardViewController: UIViewController {
         setUpPinStack()
         setUpNumpadButtonsStack()
         setUpDeleteButton()
-        
+        setUpRequestNewPinButton()
+
         setUpContrainsts()
     }
-    
+
     private func setUpBackgroundView() {
         if backgroundView == nil {
-            let backgroundBlurEffectSyle = UIBlurEffect(style: .dark)
-            backgroundView = UIVisualEffectView(effect: backgroundBlurEffectSyle)
+            let backgroundBlurEffectStyle = UIBlurEffect(style: .dark)
+            backgroundView = UIVisualEffectView(effect: backgroundBlurEffectStyle)
         }
         view.addSubview(backgroundView)
     }
@@ -202,7 +212,17 @@ open class TvOSPinKeyboardViewController: UIViewController {
         numpadButtonsStack.addArrangedSubview(deleteButton)
         
     }
-    
+
+    private func setUpRequestNewPinButton() {
+        requestPinButton = requestNewPinButton(withTitle: "Request new button")
+        requestPinButton.titleLabel?.font = deleteButtonFont
+        requestPinButton.sizeToFit()
+        requestPinButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10,
+                                                          bottom: 10, right: 10)
+        requestPinButton.addTarget(self, action: #selector(showAlertPressed), for: .primaryActionTriggered)
+        view.addSubview(requestPinButton)
+    }
+
     private func numpadButton(withTitle title: String) -> FocusTvButton {
         let numpadButton = FocusTvButton()
         numpadButton.setTitle(title, for: .normal)
@@ -217,7 +237,21 @@ open class TvOSPinKeyboardViewController: UIViewController {
     
         return numpadButton
     }
-    
+
+    private func requestNewPinButton(withTitle title: String) -> FocusTvButton {
+        let requestNewPinButton = FocusTvButton()
+        requestNewPinButton.setTitle(title, for: .normal)
+        requestNewPinButton.sizeToFit()
+        requestNewPinButton.titleLabel?.font = numpadFont
+        requestNewPinButton.normalTitleColor = buttonsNormalTitleColor
+        requestNewPinButton.focusedTitleColor = buttonsFocusedTitleColor
+        requestNewPinButton.focusedBackgroundColor = buttonsFocusedBackgroundColor
+        requestNewPinButton.focusedBackgroundEndColor = buttonsFocusedBackgroundEndColor
+        requestNewPinButton.normalBackgroundColor = buttonsNormalBackgroundColor
+        requestNewPinButton.normalBackgroundEndColor = buttonsNormalBackgroundEndColor
+
+        return requestNewPinButton
+    }
     private func setUpContrainsts() {
         constrain(backgroundView, view) {
             backgroundView, view in
@@ -248,8 +282,27 @@ open class TvOSPinKeyboardViewController: UIViewController {
             titleLabel.bottom == subtitleLabel.top - 18
             titleLabel.centerX == view.centerX
         }
+
+        constrain(requestPinButton, view, numpadButtonsStack) {
+            requestPinButton, view, numpadButtonsStack in
+            requestPinButton.centerX == view.centerX
+            requestPinButton.top == numpadButtonsStack.bottom
+            requestPinButton.width == numpadButtonsStack.width
+        }
     }
-    
+
+    @objc
+    func showAlertPressed(sender: FocusTvButton) {
+        showAlertController(withTitle: "Alert!", message: "Attention! Ur pincode is wrong", cancelButtonTitle: "Ok")
+    }
+
+    func showAlertController(withTitle title: String, message: String, cancelButtonTitle: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: cancelButtonTitle, style: .cancel)
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
+    }
+
     @objc
     func numPadButtonWasPressed(sender: FocusTvButton) {
         guard introducedPin.count < pinLength else { return }

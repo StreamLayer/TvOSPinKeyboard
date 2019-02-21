@@ -97,7 +97,6 @@
 				FFCCD0F11F399FA800E03E1D /* Frameworks */,
 				FFCCD0F21F399FA800E03E1D /* Resources */,
 				C34B296653ED9A9E1FBCB744 /* [CP] Embed Pods Frameworks */,
-				B9D73992022737DE1334C384 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -155,21 +154,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B9D73992022737DE1334C384 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TvOSPinKeyboardExample/Pods-TvOSPinKeyboardExample-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C34B296653ED9A9E1FBCB744 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
