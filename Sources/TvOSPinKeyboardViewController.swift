@@ -82,8 +82,10 @@ open class TvOSPinKeyboardViewController: UIViewController {
             return requestPinButton.isEnabled
         }
         set {
-            requestPinButton.isEnabled = newValue
-            setNeedsFocusUpdate()
+            if requestPinButton.isEnabled != newValue {
+                requestPinButton.isEnabled = newValue
+                setNeedsFocusUpdate()
+            }
         }
     }
 
