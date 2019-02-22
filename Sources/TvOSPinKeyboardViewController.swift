@@ -77,7 +77,15 @@ open class TvOSPinKeyboardViewController: UIViewController {
     public var buttonsNormalBackgroundColor = defaultNumpadNormalBackgroundColor
     public var buttonsNormalBackgroundEndColor: UIColor?
     public var autoDismissControllerByEndInput: Bool = false
-    
+    public var requestPinButtonEnable: Bool {
+        get {
+            return requestPinButton.isEnabled
+        }
+        set {
+            requestPinButton.isEnabled = newValue
+        }
+    }
+
     private var subject: String?
     private var message: String?
     private var titleLabel: UILabel!
