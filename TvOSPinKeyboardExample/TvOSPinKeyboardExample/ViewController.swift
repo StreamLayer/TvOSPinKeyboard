@@ -13,7 +13,7 @@ import TvOSPinKeyboard
 class ViewController: UIViewController, TvOSPinKeyboardViewDelegate {
     var pinKeyboard: TvOSPinKeyboardViewController!
     @IBOutlet private weak var pinLabel: UILabel!
-    
+
     @IBAction func pinButtonWasPressed(_ sender: Any) {
         pinKeyboard = TvOSPinKeyboardViewController(withTitle: "Introduce your PIN", message: "A pin code is required")
         pinKeyboard.buttonsFocusedBackgroundColor = .gray

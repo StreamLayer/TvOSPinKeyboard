@@ -39,7 +39,7 @@ struct ButtonState {
 }
 
 open class TvOSPinKeyboardViewController: UIViewController {
-    
+
     public var pinLength = defaultPinLength
 
     public weak var delegate: TvOSPinKeyboardViewDelegate?
@@ -83,6 +83,7 @@ open class TvOSPinKeyboardViewController: UIViewController {
         }
         set {
             requestPinButton.isEnabled = newValue
+            setNeedsFocusUpdate()
         }
     }
 
@@ -94,6 +95,10 @@ open class TvOSPinKeyboardViewController: UIViewController {
     private var numpadButtonsStack: UIStackView!
     private var deleteButton: FocusTvButton!
     private var requestPinButton: FocusTvButton!
+
+    override open var preferredFocusEnvironments: [UIFocusEnvironment] {
+        return [numpadButtonsStack]
+    }
 
     private var introducedPin: String = "" {
         didSet {
@@ -135,11 +140,10 @@ open class TvOSPinKeyboardViewController: UIViewController {
         activityIndicator.hidesWhenStopped = true
         activityIndicator.color = .white
         view.addSubview(activityIndicator)
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        constrain(requestPinButton, activityIndicator) {
+        constrain(activityIndicator, requestPinButton) {
             activityIndicator, requestPinButton in
-            requestPinButton.centerX == activityIndicator.centerX
-            requestPinButton.bottom == activityIndicator.top - 200
+            activityIndicator.centerX == requestPinButton.centerX
+            activityIndicator.top == requestPinButton.bottom + 50
         }
         return activityIndicator
     }()
@@ -322,7 +326,7 @@ open class TvOSPinKeyboardViewController: UIViewController {
         constrain(requestPinButton, view, numpadButtonsStack) {
             requestPinButton, view, numpadButtonsStack in
             requestPinButton.centerX == view.centerX
-            requestPinButton.top == numpadButtonsStack.bottom
+            requestPinButton.top == numpadButtonsStack.bottom + 50
             requestPinButton.width == numpadButtonsStack.width
         }
     }
@@ -337,12 +341,12 @@ open class TvOSPinKeyboardViewController: UIViewController {
 
     public func showLoading() {
         activityIndicator.startAnimating()
-        requestPinButton.isEnabled = false
+        requestPinButtonEnable = false
     }
 
     public func hideLoading() {
         activityIndicator.stopAnimating()
-        requestPinButton.isEnabled = true
+        requestPinButtonEnable = true
     }
 
     @objc
