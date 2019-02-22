@@ -99,7 +99,11 @@ open class TvOSPinKeyboardViewController: UIViewController {
     private var requestPinButton: FocusTvButton!
 
     override open var preferredFocusEnvironments: [UIFocusEnvironment] {
-        return [numpadButtonsStack]
+        if requestPinButtonEnable {
+            return [requestPinButton, numpadButtonsStack]
+        } else {
+            return [numpadButtonsStack]
+        }
     }
 
     private var introducedPin: String = "" {
