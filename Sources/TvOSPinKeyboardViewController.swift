@@ -8,6 +8,7 @@
 
 import Foundation
 import Cartography
+import UIKit
 import FocusTvButton
 
 
@@ -30,6 +31,12 @@ private let defaultPinLength = 4
 private let pinStackSpacing = CGFloat(30)
 private let numpadButtonsStackSpacing = CGFloat(5)
 private let numpadButtonsPadding = CGFloat(15)
+
+struct ButtonState {
+    var state: UIControl.State
+    var title: String?
+    var image: UIImage?
+}
 
 open class TvOSPinKeyboardViewController: UIViewController {
     
@@ -69,6 +76,7 @@ open class TvOSPinKeyboardViewController: UIViewController {
     public var buttonsFocusedBackgroundEndColor: UIColor?
     public var buttonsNormalBackgroundColor = defaultNumpadNormalBackgroundColor
     public var buttonsNormalBackgroundEndColor: UIColor?
+    public var autoDismissControllerByEndInput: Bool = false
     
     private var subject: String?
     private var message: String?
@@ -85,15 +93,19 @@ open class TvOSPinKeyboardViewController: UIViewController {
             for (index, pinLabel) in pinStackLabels.enumerated() {
                 pinLabel.text = index < introducedPin.count ? "•" : nil
             }
-            
+
             if introducedPin.count == pinLength {
-                dismiss(animated: true, completion: {
-                    self.delegate?.pinKeyboardDidEndEditing(pinCode: self.introducedPin)
-                })
+                autoDismissControllerByEndInput ?
+                        dismiss(animated: true, completion: {
+                            self.delegate?.pinKeyboardDidEndEditing(pinCode: self.introducedPin)
+                        }) :
+                        self.delegate?.pinKeyboardDidEndEditing(pinCode: self.introducedPin)
             }
         }
     }
-    
+
+    private (set) var buttonStates: [ButtonState] = []
+
     convenience public init(withTitle title: String, message: String) {
         self.init()
         
@@ -109,7 +121,22 @@ open class TvOSPinKeyboardViewController: UIViewController {
     }
     
     // MARK: - Private
-    
+
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.color = .white
+        view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        constrain(requestPinButton, activityIndicator) {
+            activityIndicator, requestPinButton in
+            requestPinButton.centerX == activityIndicator.centerX
+            requestPinButton.bottom == activityIndicator.top - 200
+        }
+        return activityIndicator
+    }()
+
+
     private func setUpView() {
         setUpBackgroundView()
         setUpTitleLabel()
@@ -298,6 +325,16 @@ open class TvOSPinKeyboardViewController: UIViewController {
         let alertAction = UIAlertAction(title: cancelButtonTitle, style: .cancel)
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion: nil)
+    }
+
+    public func showLoading() {
+        activityIndicator.startAnimating()
+        requestPinButton.isEnabled = false
+    }
+
+    public func hideLoading() {
+        activityIndicator.stopAnimating()
+        requestPinButton.isEnabled = true
     }
 
     @objc

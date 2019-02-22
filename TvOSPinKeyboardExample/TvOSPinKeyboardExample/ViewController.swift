@@ -9,6 +9,7 @@
 import UIKit
 import TvOSPinKeyboard
 
+
 class ViewController: UIViewController, TvOSPinKeyboardViewDelegate {
     var pinKeyboard: TvOSPinKeyboardViewController!
     @IBOutlet private weak var pinLabel: UILabel!
@@ -21,11 +22,10 @@ class ViewController: UIViewController, TvOSPinKeyboardViewDelegate {
         
         let backgroundBlurEffectStyle = UIBlurEffect(style: .extraDark)
         pinKeyboard.backgroundView = UIVisualEffectView(effect: backgroundBlurEffectStyle)
-        
         pinKeyboard.delegate = self
         
         present(pinKeyboard, animated: true, completion: nil)
-        afterDelay()
+//        afterDelay()
     }
 
     //test update title for button requestNewPinButton
@@ -39,8 +39,7 @@ class ViewController: UIViewController, TvOSPinKeyboardViewDelegate {
 
     // MARK: - TvOSPinKeyboardViewDelegate
     func requestNewPinButtonPressed() {
-        pinKeyboard.showAlertController(withTitle: "Alert", message: "Error, your code is wrong",
-                                        cancelButtonTitle: "So sad")
+        pinKeyboard.showLoading()
     }
 
     func pinKeyboardDidEndEditing(pinCode: String) {
