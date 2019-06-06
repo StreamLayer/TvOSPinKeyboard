@@ -1,0 +1,70 @@
+name: TvOSPinKeyboard
+
+configs:
+  Debug: debug
+  Release: release
+
+configFiles:
+  Debug: configs/base.xcconfig
+  Release: configs/base.xcconfig
+
+options:
+  usesTabs: false
+  indentWidth: 2
+  tabWidth: 2
+  createIntermediateGroups: true
+  findCarthageFrameworks: true
+  bundleIdPrefix: com.streamlayer
+
+settings:
+  base:
+    SWIFT_VERSION: 5.0
+    TARGETED_DEVICE_FAMILY: 1,2,3
+    ENABLE_BITCODE: YES
+  configs:
+    Release:
+      ENABLE_TESTABILITY: NO
+      SWIFT_COMPILATION_MODE: wholemodule
+      SWIFT_OPTIMIZATION_LEVEL: -O
+      VALIDATE_PRODUCT: YES
+    Debug:
+      ENABLE_TESTABILITY: YES
+      SWIFT_COMPILATION_MODE: singlefile
+      SWIFT_OPTIMIZATION_LEVEL: -Onone
+      VALIDATE_PRODUCT: NO
+
+targets:
+  TvOSPinKeyboard:
+    platform: tvOS
+    deploymentTarget:
+      tvOS: 10.0
+    type: framework
+    sources:
+      - path: Sources
+      - path: configs
+    configFiles:
+      Debug: configs/base.xcconfig
+      Release: configs/base.xcconfig
+    settings:
+      base:
+        INFOPLIST_FILE: Sources/Info.plist
+        DEFINES_MODULE: YES
+        SKIP_INSTALL: YES
+        COPY_PHASE_STRIP: NO
+        ENABLE_BITCODE: YES
+        PRODUCT_NAME: $(TARGET_NAME)
+
+schemes:
+  Framework:
+    build:
+      targets:
+        TvOSPinKeyboard: all
+    run:
+      config: Release
+    analyze:
+      config: Release
+    profile:
+      config: Release
+    archive:
+      config: Release
+
