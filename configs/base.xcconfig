@@ -1,6 +1,6 @@
 // Make it universal
 SUPPORTED_PLATFORMS = appletvos appletvsimulator
-TARGET_NAME = TvOSPinKeyboard
+PRODUCT_NAME = TvOSPinKeyboard
 CLANG_MODULES_AUTOLINK = YES
 
 VALID_ARCHS[sdk=appletvos*]            = arm64

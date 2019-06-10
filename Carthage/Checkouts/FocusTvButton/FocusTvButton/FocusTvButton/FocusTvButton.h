@@ -15,5 +15,3 @@ FOUNDATION_EXPORT double FocusTvButtonVersionNumber;
 FOUNDATION_EXPORT const unsigned char FocusTvButtonVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <FocusTvButton/PublicHeader.h>
-
-

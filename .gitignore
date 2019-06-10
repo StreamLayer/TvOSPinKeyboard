@@ -5,6 +5,8 @@
 ## Build generated
 build/
 DerivedData/
+Carthage/Build
+*.zip
 
 ## Various settings
 *.pbxuser
