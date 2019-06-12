@@ -10,7 +10,7 @@ VALID_ARCHS[sdk=appletvsimulator*]     = x86_64
 FRAMEWORK_SEARCH_PATHS                 = $(inherited)
 FRAMEWORK_SEARCH_PATHS[sdk=appletv*]   = $(SRCROOT)/Carthage/Build/tvOS
 
-OTHER_LDFLAGS = $(inherited) -ObjC -framework "Cartography" -framework "FocusTvButton"
+OTHER_LDFLAGS = $(inherited) -ObjC -all_load -framework "Cartography" -framework "FocusTvButton"
 
 // Dynamic linking uses different default copy paths
 LD_RUNPATH_SEARCH_PATHS[sdk=appletv*]  = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
