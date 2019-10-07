@@ -38,5 +38,5 @@ workflows:
 
 app:
   envs:
-  - ARTIFACT: "ReSwift.framework.zip"
-  - UPSTREAM: "git@github.com:ReSwift/ReSwift.git"
+  - ARTIFACT: "TvOSPinKeyboard.framework.zip"
+  - UPSTREAM: "git@github.com:zattoo/TvOSPinKeyboard.git"
