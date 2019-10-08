@@ -1,7 +1,8 @@
 #!/bin/bash
 
 ARTIFACT="TvOSPinKeyboard.framework.zip"
-UPSTREAM="git@github.com:zattoo/TvOSPinKeyboard.git"
+UPSTREAM="git@github.com:StreamLayer/TvOSPinKeyboard.git" # Use our upstream because original repo doesn't use github release feature
+# UPSTREAM="git@github.com:zattoo/TvOSPinKeyboard.git"
 
 ### Cleanup, build, archive
 rm -rf ./Carthage/ ./DerivedData
