@@ -33,8 +33,7 @@ workflows:
 
             swift package generate-xcodeproj
 
-            echo "OTHER_LDFLAGS = $(inherited) -ObjC -all_load -framework \"Cartography\" -framework \"FocusTvButton\"" >> $xcconfig
-            echo "LD_RUNPATH_SEARCH_PATHS[sdk=appletv*] = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'" >> $xcconfig
+            echo "FRAMEWORK_SEARCH_PATH[sdk=appletv*] = $(inherited) $(PROJECT_DIR)/Carthage/Build/tvOS"
             echo "ENABLE_BITCODE[sdk=appletv*] = YES" >> $xcconfig
             echo "TVOS_DEPLOYMENT_TARGET = 10.0" >> $xcconfig
             echo "MACH_O_TYPE = staticlib" >> $xcconfig

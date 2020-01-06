@@ -2,5 +2,18 @@
 import PackageDescription
 
 let package = Package(
-    name: "TvOSPinKeyboard"
+    name: "TvOSPinKeyboard",
+    products: [
+        .library(name: "TvOSPinKeyboard", targets: ["TvOSPinKeyboard"])
+    ],
+    targets: [
+        .target(
+            name: "TvOSPinKeyboard",
+            path: "Sources",
+            linkerSettings: [
+              .linkedFramework("Cartography"),
+              .linkedFramework("FocusTvButton")
+            ]
+        )
+    ]
 )
