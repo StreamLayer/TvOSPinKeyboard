@@ -1,0 +1,5 @@
+TvOSPinKeyboard-Package:
+  project: TvOSPinKeyboard.xcodeproj
+  sdks:
+  - appletvos
+  - appletvsimulator

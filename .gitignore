@@ -69,3 +69,7 @@ fastlane/screenshots
 fastlane/test_output
 
 .DS_Store
+Carthage/
+*.zip
+*.lock
+node_modules/
