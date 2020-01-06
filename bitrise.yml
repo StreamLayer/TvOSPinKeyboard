@@ -33,7 +33,7 @@ workflows:
 
             swift package generate-xcodeproj
 
-            echo "FRAMEWORK_SEARCH_PATH = $(inherited) $(PROJECT_DIR)/Carthage/Build/tvOS" >> $xcconfig
+            echo 'FRAMEWORK_SEARCH_PATH = $(inherited) $(PROJECT_DIR)/Carthage/Build/tvOS' >> $xcconfig
             echo "ENABLE_BITCODE = YES" >> $xcconfig
             echo "TVOS_DEPLOYMENT_TARGET = 10.0" >> $xcconfig
             echo "MACH_O_TYPE = staticlib" >> $xcconfig
