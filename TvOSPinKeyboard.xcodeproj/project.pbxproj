@@ -25,52 +25,52 @@
       };
       "OBJ_10" = {
          isa = "PBXFileReference";
-         path = "Carthage";
+         path = "node_modules";
          sourceTree = "SOURCE_ROOT";
       };
       "OBJ_11" = {
          isa = "PBXFileReference";
-         path = "TvOSPinKeyboardExample";
+         path = "Carthage";
          sourceTree = "SOURCE_ROOT";
       };
       "OBJ_12" = {
          isa = "PBXFileReference";
-         path = "DerivedData";
+         path = "TvOSPinKeyboardExample";
          sourceTree = "SOURCE_ROOT";
       };
       "OBJ_13" = {
          isa = "PBXFileReference";
-         path = "Cartfile.resolved";
-         sourceTree = "<group>";
+         path = "DerivedData";
+         sourceTree = "SOURCE_ROOT";
       };
       "OBJ_14" = {
          isa = "PBXFileReference";
-         path = "LICENSE";
+         path = "Cartfile.resolved";
          sourceTree = "<group>";
       };
       "OBJ_15" = {
          isa = "PBXFileReference";
-         path = "bitrise.yml";
+         path = "report.json";
          sourceTree = "<group>";
       };
       "OBJ_16" = {
          isa = "PBXFileReference";
-         path = "CHANGELOG.md";
+         path = "LICENSE";
          sourceTree = "<group>";
       };
       "OBJ_17" = {
          isa = "PBXFileReference";
-         path = "project.yml";
+         path = "bitrise.yml";
          sourceTree = "<group>";
       };
       "OBJ_18" = {
          isa = "PBXFileReference";
-         path = "TvOSPinKeyboard.podspec";
+         path = "CHANGELOG.md";
          sourceTree = "<group>";
       };
       "OBJ_19" = {
          isa = "PBXFileReference";
-         path = "README.md";
+         path = "project.yml";
          sourceTree = "<group>";
       };
       "OBJ_2" = {
@@ -84,34 +84,44 @@
       };
       "OBJ_20" = {
          isa = "PBXFileReference";
-         path = "Cartfile.project";
+         path = "TvOSPinKeyboard.podspec";
          sourceTree = "<group>";
       };
       "OBJ_21" = {
          isa = "PBXFileReference";
-         path = "Cartfile.private";
+         path = "README.md";
          sourceTree = "<group>";
       };
       "OBJ_22" = {
          isa = "PBXFileReference";
-         path = "Preview.gif";
+         path = "Cartfile.project";
          sourceTree = "<group>";
       };
       "OBJ_23" = {
          isa = "PBXFileReference";
-         path = "package.json";
+         path = "Cartfile.private";
+         sourceTree = "<group>";
+      };
+      "OBJ_24" = {
+         isa = "PBXFileReference";
+         path = "Preview.gif";
          sourceTree = "<group>";
       };
       "OBJ_25" = {
+         isa = "PBXFileReference";
+         path = "package.json";
+         sourceTree = "<group>";
+      };
+      "OBJ_27" = {
          isa = "XCConfigurationList";
          buildConfigurations = (
-            "OBJ_26",
-            "OBJ_27"
+            "OBJ_28",
+            "OBJ_29"
          );
          defaultConfigurationIsVisible = "0";
          defaultConfigurationName = "Release";
       };
-      "OBJ_26" = {
+      "OBJ_28" = {
          isa = "XCBuildConfiguration";
          buildSettings = {
             LD = "/usr/bin/true";
@@ -131,7 +141,7 @@
          };
          name = "Debug";
       };
-      "OBJ_27" = {
+      "OBJ_29" = {
          isa = "XCBuildConfiguration";
          buildSettings = {
             LD = "/usr/bin/true";
@@ -150,16 +160,6 @@
             SWIFT_VERSION = "5.0";
          };
          name = "Release";
-      };
-      "OBJ_28" = {
-         isa = "PBXSourcesBuildPhase";
-         files = (
-            "OBJ_29"
-         );
-      };
-      "OBJ_29" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_6";
       };
       "OBJ_3" = {
          isa = "XCBuildConfiguration";
@@ -202,6 +202,16 @@
             USE_HEADERMAP = "NO";
          };
          name = "Debug";
+      };
+      "OBJ_30" = {
+         isa = "PBXSourcesBuildPhase";
+         files = (
+            "OBJ_31"
+         );
+      };
+      "OBJ_31" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_6";
       };
       "OBJ_4" = {
          isa = "XCBuildConfiguration";
@@ -261,7 +271,9 @@
             "OBJ_20",
             "OBJ_21",
             "OBJ_22",
-            "OBJ_23"
+            "OBJ_23",
+            "OBJ_24",
+            "OBJ_25"
          );
          path = "";
          sourceTree = "<group>";
@@ -298,9 +310,9 @@
       };
       "TvOSPinKeyboard::SwiftPMPackageDescription" = {
          isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_25";
+         buildConfigurationList = "OBJ_27";
          buildPhases = (
-            "OBJ_28"
+            "OBJ_30"
          );
          dependencies = (
          );
