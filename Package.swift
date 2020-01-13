@@ -7,7 +7,7 @@ let package = Package(
       .tvOS(.v11)
     ],
     products: [
-        .library(name: "SLR_TvOSPinKeyboard", targets: ["SLR_vOSPinKeyboard"])
+        .library(name: "SLR_TvOSPinKeyboard", targets: ["SLR_TvOSPinKeyboard"])
     ],
     targets: [
         .target(
