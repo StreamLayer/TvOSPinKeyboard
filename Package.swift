@@ -7,16 +7,12 @@ let package = Package(
       .tvOS(.v11)
     ],
     products: [
-        .library(name: "TvOSPinKeyboard", targets: ["TvOSPinKeyboard"])
+        .library(name: "SLR_TvOSPinKeyboard", targets: ["TSLR_vOSPinKeyboard"])
     ],
     targets: [
         .target(
-            name: "TvOSPinKeyboard",
-            path: "Sources",
-            linkerSettings: [
-              .linkedFramework("Cartography"),
-              .linkedFramework("FocusTvButton")
-            ]
+            name: "SLR_TvOSPinKeyboard",
+            path: "Sources"
         )
     ]
 )

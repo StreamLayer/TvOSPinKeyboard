@@ -1,4 +1,4 @@
-TvOSPinKeyboard-Package:
+SLR_TvOSPinKeyboard-Package:
   project: TvOSPinKeyboard.xcodeproj
   sdks:
   - appletvos
