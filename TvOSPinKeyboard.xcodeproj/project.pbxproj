@@ -20,7 +20,7 @@
          productRefGroup = "OBJ_13";
          projectDirPath = ".";
          targets = (
-            "TvOSPinKeyboard::TvOSPinKeyboard",
+            "TvOSPinKeyboard::SLR_TvOSPinKeyboard",
             "TvOSPinKeyboard::SwiftPMPackageDescription"
          );
       };
@@ -45,7 +45,7 @@
       "OBJ_13" = {
          isa = "PBXGroup";
          children = (
-            "TvOSPinKeyboard::TvOSPinKeyboard::Product"
+            "TvOSPinKeyboard::SLR_TvOSPinKeyboard::Product"
          );
          name = "Products";
          path = "";
@@ -202,7 +202,7 @@
             HEADER_SEARCH_PATHS = (
                "$(inherited)"
             );
-            INFOPLIST_FILE = "TvOSPinKeyboard.xcodeproj/TvOSPinKeyboard_Info.plist";
+            INFOPLIST_FILE = "TvOSPinKeyboard.xcodeproj/SLR_TvOSPinKeyboard_Info.plist";
             IPHONEOS_DEPLOYMENT_TARGET = "8.0";
             LD_RUNPATH_SEARCH_PATHS = (
                "$(inherited)",
@@ -213,16 +213,12 @@
                "$(inherited)"
             );
             OTHER_LDFLAGS = (
-               "$(inherited)",
-               "-framework",
-               "Cartography",
-               "-framework",
-               "FocusTvButton"
+               "$(inherited)"
             );
             OTHER_SWIFT_FLAGS = (
                "$(inherited)"
             );
-            PRODUCT_BUNDLE_IDENTIFIER = "TvOSPinKeyboard";
+            PRODUCT_BUNDLE_IDENTIFIER = "SLR-TvOSPinKeyboard";
             PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
             PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
             SKIP_INSTALL = "YES";
@@ -230,7 +226,7 @@
                "$(inherited)"
             );
             SWIFT_VERSION = "5.0";
-            TARGET_NAME = "TvOSPinKeyboard";
+            TARGET_NAME = "SLR_TvOSPinKeyboard";
             TVOS_DEPLOYMENT_TARGET = "11.0";
             WATCHOS_DEPLOYMENT_TARGET = "2.0";
          };
@@ -247,7 +243,7 @@
             HEADER_SEARCH_PATHS = (
                "$(inherited)"
             );
-            INFOPLIST_FILE = "TvOSPinKeyboard.xcodeproj/TvOSPinKeyboard_Info.plist";
+            INFOPLIST_FILE = "TvOSPinKeyboard.xcodeproj/SLR_TvOSPinKeyboard_Info.plist";
             IPHONEOS_DEPLOYMENT_TARGET = "8.0";
             LD_RUNPATH_SEARCH_PATHS = (
                "$(inherited)",
@@ -258,16 +254,12 @@
                "$(inherited)"
             );
             OTHER_LDFLAGS = (
-               "$(inherited)",
-               "-framework",
-               "Cartography",
-               "-framework",
-               "FocusTvButton"
+               "$(inherited)"
             );
             OTHER_SWIFT_FLAGS = (
                "$(inherited)"
             );
-            PRODUCT_BUNDLE_IDENTIFIER = "TvOSPinKeyboard";
+            PRODUCT_BUNDLE_IDENTIFIER = "SLR-TvOSPinKeyboard";
             PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
             PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
             SKIP_INSTALL = "YES";
@@ -275,7 +267,7 @@
                "$(inherited)"
             );
             SWIFT_VERSION = "5.0";
-            TARGET_NAME = "TvOSPinKeyboard";
+            TARGET_NAME = "SLR_TvOSPinKeyboard";
             TVOS_DEPLOYMENT_TARGET = "11.0";
             WATCHOS_DEPLOYMENT_TARGET = "2.0";
          };
@@ -453,6 +445,25 @@
          path = "Info.plist";
          sourceTree = "<group>";
       };
+      "TvOSPinKeyboard::SLR_TvOSPinKeyboard" = {
+         isa = "PBXNativeTarget";
+         buildConfigurationList = "OBJ_32";
+         buildPhases = (
+            "OBJ_35",
+            "OBJ_38"
+         );
+         dependencies = (
+         );
+         name = "SLR_TvOSPinKeyboard";
+         productName = "SLR_TvOSPinKeyboard";
+         productReference = "TvOSPinKeyboard::SLR_TvOSPinKeyboard::Product";
+         productType = "com.apple.product-type.framework";
+      };
+      "TvOSPinKeyboard::SLR_TvOSPinKeyboard::Product" = {
+         isa = "PBXFileReference";
+         path = "SLR_TvOSPinKeyboard.framework";
+         sourceTree = "BUILT_PRODUCTS_DIR";
+      };
       "TvOSPinKeyboard::SwiftPMPackageDescription" = {
          isa = "PBXNativeTarget";
          buildConfigurationList = "OBJ_40";
@@ -464,25 +475,6 @@
          name = "TvOSPinKeyboardPackageDescription";
          productName = "TvOSPinKeyboardPackageDescription";
          productType = "com.apple.product-type.framework";
-      };
-      "TvOSPinKeyboard::TvOSPinKeyboard" = {
-         isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_32";
-         buildPhases = (
-            "OBJ_35",
-            "OBJ_38"
-         );
-         dependencies = (
-         );
-         name = "TvOSPinKeyboard";
-         productName = "TvOSPinKeyboard";
-         productReference = "TvOSPinKeyboard::TvOSPinKeyboard::Product";
-         productType = "com.apple.product-type.framework";
-      };
-      "TvOSPinKeyboard::TvOSPinKeyboard::Product" = {
-         isa = "PBXFileReference";
-         path = "TvOSPinKeyboard.framework";
-         sourceTree = "BUILT_PRODUCTS_DIR";
       };
    };
    rootObject = "OBJ_1";
