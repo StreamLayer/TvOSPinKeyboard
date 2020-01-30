@@ -12,6 +12,7 @@ workflows:
           - name: node
           - name: streamlayer/formulas/carthage
           - name: streamlayer/formulas/prefixify
+          - name: xcodegen
         inputs:
         - content: |-
             #!/bin/bash
@@ -31,8 +32,9 @@ workflows:
               --include ../FocusTvButton/report.json \
               --include ../Cartography/report.json
 
-            swift package generate-xcodeproj
+            xcodegen
 
+            echo 'OTHER_LDFLAGS = $(inherited) -ObjC -all_load -framework SLR_Cartography -framework SLR_FocusTvButton' >> $xcconfig
             echo 'FRAMEWORK_SEARCH_PATHS = $(inherited) $(PROJECT_DIR)/Carthage/Build/tvOS' >> $xcconfig
             echo "ENABLE_BITCODE = YES" >> $xcconfig
             echo "TVOS_DEPLOYMENT_TARGET = 10.0" >> $xcconfig

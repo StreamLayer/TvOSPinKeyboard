@@ -73,3 +73,4 @@ Carthage/
 *.zip
 *.lock
 node_modules/
+*.xcodeproj
